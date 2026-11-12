@@ -135,3 +135,14 @@ export async function saveSettings(f: FormData) {
   refresh("/admin/parametres");
   redirect("/admin/parametres?ok=1");
 }
+
+/* ---------- mon compte ---------- */
+export async function changePassword(_: unknown, f: FormData) {
+  const sb = await admin();
+  const p1 = String(f.get("password") ?? ""), p2 = String(f.get("confirm") ?? "");
+  if (p1.length < 8) return { error: "Le mot de passe doit contenir au moins 8 caractères." };
+  if (p1 !== p2) return { error: "Les deux mots de passe ne sont pas identiques." };
+  const { error } = await sb.auth.updateUser({ password: p1 });
+  if (error) return { error: "Impossible de changer le mot de passe : " + error.message };
+  return { ok: true };
+}

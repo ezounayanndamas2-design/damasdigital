@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { signOut } from "../actions";
 
-const LINKS = [["/admin", "Tableau de bord"], ["/admin/demandes", "Demandes"], ["/admin/packs", "Packs"], ["/admin/prestations", "Prestations"], ["/admin/services", "Services"], ["/admin/faq", "FAQ"], ["/admin/parametres", "Paramètres"]];
+const LINKS = [["/admin", "Tableau de bord"], ["/admin/demandes", "Demandes"], ["/admin/packs", "Packs"], ["/admin/prestations", "Prestations"], ["/admin/services", "Services"], ["/admin/faq", "FAQ"], ["/admin/parametres", "Paramètres"], ["/admin/compte", "Mon compte"]];
 
 export default function Sidebar({ fresh }: { fresh: number }) {
   const path = usePathname();
